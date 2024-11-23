@@ -1,6 +1,12 @@
 import bus as bis
-nama_pembeli= input("Masukan nama anda : ")
-pilihan = input("Mau pesan tiket bus atau hotel [Bus,Hotel] ? ").lower()
-if pilihan == "bus":
-    bis.get_bus()
-    
+from bus import result
+
+def main():
+        nama_pembeli= input("Masukan nama anda : ")
+        pilihan = input("Mau pesan tiket transportasi atau hotel [Bus,Hotel] ? ").lower()
+        if pilihan == "bus":
+            bis.get_bus()
+
+if __name__ == "__main__":
+    main()
+    print(result)
