@@ -9,8 +9,6 @@ result = {
     "kelas_bus": []
 }
 def get_bus():
-
-
     jumlah_tiket = int(input("Berapa tiket yang ingin anda beli : "))
     result["jumlah_tiket"] = jumlah_tiket
     total_harga_tiket = 0
@@ -36,7 +34,9 @@ def get_bus():
             print("error")
 
         if destinasi == titik_awal:
-            print("Anda melakukan perjalanan dalam kota")
+            total_harga_tiket += harga_tiket
+            result["destinasi"].append(destinasi.capitalize())
+            result["harga_tiket"].append(harga_tiket)
 
         elif destinasi == "bandung":
             harga_tiket += bandung_bus
