@@ -1,4 +1,4 @@
-from ..utils import validateInput as Validate
+from utils import validateInput as Validate
 # Konstanta untuk harga dan pilihan
 HARGA_KAMAR = {
     "standart": 0,
@@ -10,9 +10,9 @@ HARGA_KAMAR = {
 
 
 HARGA_HOTEL = {
-    "mercure(bandung)": 300000,
-    "novotel(semarang)": 200000,
-    "sheraton(surabaya)": 250000
+    "mercure": 300000,
+    "novotel": 200000,
+    "sheraton": 250000
 }
 
 NAMA_HOTEL = list(HARGA_HOTEL.keys())
@@ -64,7 +64,7 @@ def get_hotel():
         # Menghitung harga tiket
         harga_hotel = calculate_hotel_price(tipe_kamar, nama_hotel)
         
-        # Menyimpan data tiket
+        # # Menyimpan data tiket
         result["nama_hotel"].append(nama_hotel.title())
         result["tipe_kamar"].append(tipe_kamar.title())
         result["harga_hotel"].append(harga_hotel)
