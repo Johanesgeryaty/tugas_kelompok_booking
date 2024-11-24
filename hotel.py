@@ -1,51 +1,60 @@
 # Konstanta untuk harga dan pilihan
-HARGA_BUS = {
-    "bandung": 200000,
-    "semarang": 100000,
-    "surabaya": 150000
+HARGA_KAMAR = {
+    "standard": 0,
+    "twin": 100000,
+    "double": 150000,
+    "family": 300000
 }
 
-KELAS_BUS = ["ekonomi", "vip", "executive"]
-KOTA_TERSEDIA = list(HARGA_BUS.keys())
+
+
+HARGA_HOTEL = {
+    "mercure(bandung)": 300000,
+    "novotel(semarang)": 200000,
+    "sheraton(surabaya)": 250000
+}
+
+NAMA_HOTEL = list(HARGA_HOTEL.keys())
+
+JENIS_KAMAR = list(HARGA_KAMAR.keys())
 
 result = {
-    "destinasi": [],
-    "harga_tiket": [],
-    "jumlah_tiket": 0,
-    "titik_awal": [],
-    "kelas_bus": [],
-    "total_harga_tiket": 0
+    "harga_hotel": [],
+    "jumlah_kamar": 0,
+    "jenis_kamar": [],
+    "total_harga_tiket": 0,
+    "nama_hotel": []
 }
 
 def validate_input(prompt, valid_options):
     """Memvalidasi input user"""
     while True:
         value = input(prompt).lower().strip()
-        if value in valid_options:
-            return value
+        for i in valid_options:
+            if value in i:
+                return i
         print(f"Input tidak valid. Pilihan yang tersedia: {', '.join(valid_options).title()}")
 
-def calculate_ticket_price(asal, tujuan):
-    """Menghitung harga tiket berdasarkan asal dan tujuan"""
-    if asal == tujuan:
-        return HARGA_BUS[asal]
-    return HARGA_BUS[asal] + HARGA_BUS[tujuan]
+def calculate_hotel_price(jenisKamar, namaHotel):
+    """Menghitung harga hotel berdasarkan nama hotel dan jenis kamar"""
 
-def get_bus():
+    return HARGA_KAMAR[jenisKamar] + HARGA_HOTEL[namaHotel]
+
+def get_hotel():
     """Fungsi utama untuk pembelian tiket bus"""
     
     while True:
         try:
-            jumlah_tiket = int(input("Berapa tiket yang ingin anda beli: "))
-            if jumlah_tiket > 0:
+            jumlah_kamar = int(input("Berapa kamar yang ingin anda pesan: "))
+            if jumlah_kamar > 0:
                 break
-            print("Jumlah tiket harus lebih dari 0")
+            print("Jumlah kamar yang harus dipesan minimal 1")
         except ValueError:
             print("Masukkan angka yang valid")
     
-    result["jumlah_tiket"] = jumlah_tiket
+    result["jumlah_kamar"] = jumlah_kamar
     
-    for i in range(jumlah_tiket):
+    for i in range(jumlah_kamar):
         print(f"\nTiket ke-{i + 1}")
         
         # Input dan validasi kelas bus
@@ -76,3 +85,4 @@ def get_bus():
         result["harga_tiket"].append(harga_tiket)
         result["total_harga_tiket"] += harga_tiket
         
+    return result
