@@ -1,3 +1,4 @@
+from ..utils import validateInput as Validate
 # Konstanta untuk harga dan pilihan
 HARGA_KAMAR = {
     "standart": 0,
@@ -26,15 +27,6 @@ result = {
     "nama_hotel": []
 }
 
-def validate_input(prompt, valid_options):
-    """Memvalidasi input user"""
-    while True:
-        value = input(prompt).lower().strip()
-        for i in valid_options:
-            if value in i:
-                return i
-        print(f"Input tidak valid. Pilihan yang tersedia: {', '.join(valid_options).title()}")
-
 def calculate_hotel_price(jenisKamar, namaHotel):
     """Menghitung harga hotel berdasarkan nama hotel dan jenis kamar"""
 
@@ -58,13 +50,13 @@ def get_hotel():
         print(f"\nTiket ke-{i + 1}")
         
         # Input dan validasi kelas bus
-        tipe_kamar = validate_input(
+        tipe_kamar = Validate.validate_input(
             "Masukkan Tipe kamar [Standart/Twin/Double/Family]: ",
             JENIS_KAMAR
         )
         
         # Input dan validasi titik awal
-        nama_hotel = validate_input(
+        nama_hotel = Validate.validate_input(
             "Masukkan Nama Hotel [Mercure(Bandung)/Novotel(Semarang)/Sheraton(Surabaya)]: ",
             NAMA_HOTEL
         )
@@ -77,3 +69,5 @@ def get_hotel():
         result["tipe_kamar"].append(tipe_kamar.title())
         result["harga_hotel"].append(harga_hotel)
         result["total_harga_hotel"] += harga_hotel
+    
+    return result

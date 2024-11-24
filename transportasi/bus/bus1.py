@@ -1,4 +1,6 @@
 # Konstanta untuk harga dan pilihan
+from ...utils import validateInput as Validate
+
 HARGA_BUS = {
     "bandung": 200000,
     "semarang": 100000,
@@ -20,17 +22,11 @@ result = {
     "harga_tiket": [],
     "jumlah_tiket": 0,
     "titik_awal": [],
-    "kelas_bus": {},
+    "kelas": {},
     "total_harga_tiket": 0
 }
 
-def validate_input(prompt, valid_options):
-    """Memvalidasi input user"""
-    while True:
-        value = input(prompt).lower().strip()
-        if value in valid_options:
-            return value
-        print(f"Input tidak valid. Pilihan yang tersedia: {', '.join(valid_options).title()}")
+
 
 def calculate_ticket_price(asal, tujuan, kelas):
     """Menghitung harga tiket berdasarkan asal dan tujuan"""
@@ -55,20 +51,20 @@ def get_bus():
     for i in range(jumlah_tiket):
         print(f"\nTiket ke-{i + 1}")
         
-        # Input dan validasi kelas bus
-        kelas = validate_input(
+        # Input dan validasi kelas Bus
+        kelas = Validate.validate_input(
             "Masukkan kelas bus [Ekonomi/VIP/Executive]: ",
             KELAS_BUS
         )
         
         # Input dan validasi titik awal
-        asal = validate_input(
+        asal = Validate.validate_input(
             "Masukkan titik awal [Bandung/Semarang/Surabaya]: ",
             KOTA_TERSEDIA
         )
         
         # Input dan validasi tujuan
-        tujuan = validate_input(
+        tujuan = Validate.validate_input(
             "Masukkan tujuan [Bandung/Semarang/Surabaya]: ",
             KOTA_TERSEDIA
         )
@@ -82,4 +78,6 @@ def get_bus():
         result["destinasi"].append(tujuan.title())
         result["harga_tiket"].append(harga_tiket)
         result["total_harga_tiket"] += harga_tiket
-        
+
+    return result
+         
