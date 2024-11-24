@@ -1,6 +1,6 @@
 # Konstanta untuk harga dan pilihan
 HARGA_KAMAR = {
-    "standard": 0,
+    "standart": 0,
     "twin": 100000,
     "double": 150000,
     "family": 300000
@@ -21,8 +21,8 @@ JENIS_KAMAR = list(HARGA_KAMAR.keys())
 result = {
     "harga_hotel": [],
     "jumlah_kamar": 0,
-    "jenis_kamar": [],
-    "total_harga_tiket": 0,
+    "tipe_kamar": [],
+    "total_harga_hotel": 0,
     "nama_hotel": []
 }
 
@@ -58,31 +58,22 @@ def get_hotel():
         print(f"\nTiket ke-{i + 1}")
         
         # Input dan validasi kelas bus
-        kelas = validate_input(
-            "Masukkan kelas bus [Ekonomi/VIP/Executive]: ",
-            KELAS_BUS
+        tipe_kamar = validate_input(
+            "Masukkan Tipe kamar [Standart/Twin/Double/Family]: ",
+            JENIS_KAMAR
         )
         
         # Input dan validasi titik awal
-        asal = validate_input(
-            "Masukkan titik awal [Bandung/Semarang/Surabaya]: ",
-            KOTA_TERSEDIA
+        nama_hotel = validate_input(
+            "Masukkan Nama Hotel [Mercure(Bandung)/Novotel(Semarang)/Sheraton(Surabaya)]: ",
+            NAMA_HOTEL
         )
-        
-        # Input dan validasi tujuan
-        tujuan = validate_input(
-            "Masukkan tujuan [Bandung/Semarang/Surabaya]: ",
-            KOTA_TERSEDIA
-        )
-        
+ 
         # Menghitung harga tiket
-        harga_tiket = calculate_ticket_price(asal, tujuan)
+        harga_hotel = calculate_hotel_price(tipe_kamar, nama_hotel)
         
         # Menyimpan data tiket
-        result["kelas_bus"].append(kelas.title())
-        result["titik_awal"].append(asal.title())
-        result["destinasi"].append(tujuan.title())
-        result["harga_tiket"].append(harga_tiket)
-        result["total_harga_tiket"] += harga_tiket
-        
-    return result
+        result["nama_hotel"].append(nama_hotel.title())
+        result["tipe_kamar"].append(tipe_kamar.title())
+        result["harga_hotel"].append(harga_hotel)
+        result["total_harga_hotel"] += harga_hotel

@@ -5,7 +5,14 @@ HARGA_BUS = {
     "surabaya": 150000
 }
 
-KELAS_BUS = ["ekonomi", "vip", "executive"]
+HARGA_KELAS = {
+    "ekonomi" : 0,
+    "vip" : 100000,
+    "executive" : 200000
+}
+
+KELAS_BUS = list(HARGA_KELAS.keys())
+
 KOTA_TERSEDIA = list(HARGA_BUS.keys())
 
 result = {
@@ -13,7 +20,7 @@ result = {
     "harga_tiket": [],
     "jumlah_tiket": 0,
     "titik_awal": [],
-    "kelas_bus": [],
+    "kelas_bus": {},
     "total_harga_tiket": 0
 }
 
@@ -25,11 +32,11 @@ def validate_input(prompt, valid_options):
             return value
         print(f"Input tidak valid. Pilihan yang tersedia: {', '.join(valid_options).title()}")
 
-def calculate_ticket_price(asal, tujuan):
+def calculate_ticket_price(asal, tujuan, kelas):
     """Menghitung harga tiket berdasarkan asal dan tujuan"""
     if asal == tujuan:
-        return HARGA_BUS[asal]
-    return HARGA_BUS[asal] + HARGA_BUS[tujuan]
+        return HARGA_BUS[asal] + HARGA_KELAS[kelas]
+    return HARGA_BUS[asal] + HARGA_BUS[tujuan] + HARGA_KELAS[kelas]
 
 def get_bus():
     """Fungsi utama untuk pembelian tiket bus"""
@@ -67,10 +74,10 @@ def get_bus():
         )
         
         # Menghitung harga tiket
-        harga_tiket = calculate_ticket_price(asal, tujuan)
+        harga_tiket = calculate_ticket_price(asal, tujuan, kelas)
         
         # Menyimpan data tiket
-        result["kelas_bus"].append(kelas.title())
+        result["kelas_bus"].update({kelas : HARGA_KELAS[kelas]})
         result["titik_awal"].append(asal.title())
         result["destinasi"].append(tujuan.title())
         result["harga_tiket"].append(harga_tiket)
