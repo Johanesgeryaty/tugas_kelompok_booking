@@ -13,18 +13,20 @@ def get_transportasi():
             if transportasi_input in pilihan_valid:
                 match transportasi_input:
                     case "bus":
-                        y = Bus.get_bus()
+                        bus = Bus.get_bus()
                         x = Validate.validate_input("Apakah anda ingin memesan kamar hotel? (Ya/Tidak)", ["ya", "tidak"])
                         if x == "ya":
-                            Hotel.get_hotel()
+                            # hotel = Hotel.get_hotel()
+                            return Hotel.get_hotel
                         elif x == "tidak":
-                            return y
-                            break
+                            return bus
+                            
                     case "kereta":
                         Kereta.get_train()
-                        x = Validate.validate_input("Apakah anda ingin memesan kamar hotel? (Ya/Tidak)", ["Ya", "Tidak"])
+                        x = Validate.validate_input("Apakah anda ingin memesan kamar hotel? (Ya/Tidak)", ["ya", "tidak"])
                         if x == "ya":
-                            Hotel.get_hotel()
+                            hotel = Hotel.get_hotel()
+                            break
                         elif x == "tidak":
                             break
                     case _:
