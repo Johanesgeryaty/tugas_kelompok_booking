@@ -10,7 +10,7 @@ HARGA_KAMAR = {
 
 
 HARGA_HOTEL = {
-    "mercure": 300000,
+    "mercure(bandung)": 300000,
     "novotel": 200000,
     "sheraton": 250000
 }
