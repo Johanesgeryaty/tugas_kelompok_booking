@@ -76,3 +76,5 @@ def get_train():
         result["destinasi"].append(tujuan.title())
         result["harga_tiket"].append(harga_tiket)
         result["total_harga_tiket"] += harga_tiket
+
+        return result

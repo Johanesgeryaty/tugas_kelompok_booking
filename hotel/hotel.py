@@ -1,4 +1,5 @@
 from utils import validateInput as Validate
+from view import view as View
 # Konstanta untuk harga dan pilihan
 HARGA_KAMAR = {
     "standart": 0,
@@ -11,8 +12,8 @@ HARGA_KAMAR = {
 
 HARGA_HOTEL = {
     "mercure(bandung)": 300000,
-    "novotel": 200000,
-    "sheraton": 250000
+    "novotel(semarang)": 200000,
+    "sheraton(surabaya)": 250000
 }
 
 NAMA_HOTEL = list(HARGA_HOTEL.keys())
@@ -49,17 +50,20 @@ def get_hotel():
     for i in range(jumlah_kamar):
         print(f"\nTiket ke-{i + 1}")
         
+        View.view_hotel(HARGA_HOTEL)
         # Input dan validasi kelas bus
+        nama_hotel = Validate.validate_input(
+            "Masukkan Nama Hotel [Mercure(Bandung)/Novotel(Semarang)/Sheraton(Surabaya)]: ",
+            NAMA_HOTEL
+        )
+
+        View.view_type(HARGA_KAMAR)
+        # Input dan validasi titik awal
         tipe_kamar = Validate.validate_input(
             "Masukkan Tipe kamar [Standart/Twin/Double/Family]: ",
             JENIS_KAMAR
         )
         
-        # Input dan validasi titik awal
-        nama_hotel = Validate.validate_input(
-            "Masukkan Nama Hotel [Mercure(Bandung)/Novotel(Semarang)/Sheraton(Surabaya)]: ",
-            NAMA_HOTEL
-        )
  
         # Menghitung harga tiket
         harga_hotel = calculate_hotel_price(tipe_kamar, nama_hotel)
