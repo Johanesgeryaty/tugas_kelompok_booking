@@ -10,11 +10,26 @@
 # HARGA_HOTEL.update({key: value})
 
 # print(HARGA_HOTEL)
-from hotel import hotel as Hotel
+# from utils import validateInput as Validate
 
+# list = ["standart", "twin"]
 
-def x(param):
-    ya = param[]
-    print(ya)
-x(Hotel.get_hotel())
+# x = input("masukkan: ")
+
+# for i in list:
+#     if x in list:
+#         print("anjg")
+#     else:
+#         print("hahha")
+
+HARGA_KAMAR = {
+    "standart": 0,
+    "twin": 100000,
+    "double": 150000,
+    "family": 300000
+}
+
+kontolll = list(HARGA_KAMAR.keys())
+for i in kontolll:
+    print(kontolll[i])
 

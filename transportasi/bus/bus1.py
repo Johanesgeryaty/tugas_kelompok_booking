@@ -1,5 +1,5 @@
 # Konstanta untuk harga dan pilihan
-from ...utils import validateInput as Validate
+from utils import validateInput as Validate
 
 HARGA_BUS = {
     "bandung": 200000,
@@ -73,7 +73,7 @@ def get_bus():
         harga_tiket = calculate_ticket_price(asal, tujuan, kelas)
         
         # Menyimpan data tiket
-        result["kelas_bus"].update({kelas : HARGA_KELAS[kelas]})
+        result["kelas"].update({kelas : HARGA_KELAS[kelas]})
         result["titik_awal"].append(asal.title())
         result["destinasi"].append(tujuan.title())
         result["harga_tiket"].append(harga_tiket)

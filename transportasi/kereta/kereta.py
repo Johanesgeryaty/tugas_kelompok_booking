@@ -1,4 +1,4 @@
-from ...utils import validateInput as Validate
+from utils import validateInput as Validate
 
 # Konstanta untuk harga dan pilihan
 HARGA_KERETA = {

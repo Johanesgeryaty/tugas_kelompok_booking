@@ -1,7 +1,7 @@
-from .bus import bus1 as Bus
-from .kereta import kereta as Kereta
-from ..hotel import hotel as Hotel
-from ..utils import validateInput as Validate
+from transportasi.bus import bus1 as Bus
+from transportasi.kereta import kereta as Kereta
+from hotel import hotel as Hotel
+from utils import validateInput as Validate
 
 def get_transportasi():
     pilihan_valid = ["bus", "kereta"]
@@ -13,17 +13,20 @@ def get_transportasi():
             if transportasi_input in pilihan_valid:
                 match transportasi_input:
                     case "bus":
-                        Bus.get_bus()
-                        x = Validate.validate_input("Apakah anda ingin memesan kamar hotel? (Ya/Tidak)", ["Ya", "Tidak"])
+                        bus = Bus.get_bus()
+                        x = Validate.validate_input("Apakah anda ingin memesan kamar hotel? (Ya/Tidak)", ["ya", "tidak"])
                         if x == "ya":
-                            Hotel.get_hotel()
+                            # hotel = Hotel.get_hotel()
+                            return Hotel.get_hotel
                         elif x == "tidak":
-                            break
+                            return bus
+                            
                     case "kereta":
                         Kereta.get_train()
-                        x = Validate.validate_input("Apakah anda ingin memesan kamar hotel? (Ya/Tidak)", ["Ya", "Tidak"])
+                        x = Validate.validate_input("Apakah anda ingin memesan kamar hotel? (Ya/Tidak)", ["ya", "tidak"])
                         if x == "ya":
-                            Hotel.get_hotel()
+                            hotel = Hotel.get_hotel()
+                            break
                         elif x == "tidak":
                             break
                     case _:

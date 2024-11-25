@@ -2,6 +2,12 @@ def validate_input(prompt, valid_options):
     """Memvalidasi input user"""
     while True:
         value = input(prompt).lower().strip()
-        if value in valid_options:
-            return value
+        
+        for i in range(len(valid_options)):
+            if value in valid_options[i] or value == valid_options[i] :
+                print(value)
+                print(valid_options[i])
+                print(i)
+                return valid_options[i]
+            continue
         print(f"Input tidak valid. Pilihan yang tersedia: {', '.join(valid_options).title()}")
