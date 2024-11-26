@@ -51,7 +51,7 @@ def get_bus():
     for i in range(jumlah_tiket):
         print(f"\nTiket ke-{i + 1}")
         
-        # Input dan validasi kelas Bus
+        # Input dan validasi kelas
         kelas = Validate.validate_input(
             "Masukkan kelas bus [Ekonomi/VIP/Executive]: ",
             KELAS_BUS

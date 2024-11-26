@@ -2,12 +2,15 @@ from transportasi.bus import bus1 as Bus
 from transportasi.kereta import kereta as Kereta
 from hotel import hotel as Hotel
 from utils import validateInput as Validate
+from view import view as View
 
+penanda = 0
 def get_transportasi():
     pilihan_valid = ["bus", "kereta"]
-    
+    penanda = 1
     while True:
         try:
+            View.view_trans(pilihan_valid)
             transportasi_input = input("Masukkan pilihan transportasi anda [Bus/Kereta]: ").lower().strip()
             
             if transportasi_input in pilihan_valid:

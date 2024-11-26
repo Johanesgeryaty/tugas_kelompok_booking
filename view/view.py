@@ -14,18 +14,33 @@ def view_hotel(hotel):
     print(" No.      Nama Hotel              Harga")
     print("========================================")
     for i in range(len(nama_hotel)):
-        print("%i \t %s \t %i " % (i + 1, nama_hotel[i], hotel[nama_hotel[i]]))
+        print("%i \t %s \t %i " % (i + 1, str(nama_hotel[i]).capitalize(), hotel[nama_hotel[i]]))
     print("========================================")
 
 def view_type(kamar):
     nama_kamar = list(kamar.keys())
+    print("Memilih Tipe kamar diatas standart akan dikenakan biaya tambahan sebagai berikut : ")
     print("========================================")
-    print(" No.     Nama Kamar              Harga")
+    print(" No.     Tipe Kamar              Harga")
     print("========================================")
     for i in range(len(nama_kamar)):
-        if i == 1:
-            print("%i \t %s \t\t\t %i " % (i + 1, nama_kamar[i], kamar[nama_kamar[i]]))
+        if i == 0:
+            print("%i \t %s \t\t  " % (i + 1, str(nama_kamar[i]).capitalize()))
             continue
-        print("%i \t %s \t\t %i " % (i + 1, nama_kamar[i], kamar[nama_kamar[i]]))
+        if i == 1:
+            print("%i \t %s \t\t\t %i " % (i + 1, str(nama_kamar[i]).capitalize(), kamar[nama_kamar[i]]))
+            continue
+        print("%i \t %s \t\t %i " % (i + 1, str(nama_kamar[i]).capitalize(), kamar[nama_kamar[i]]))
     print("========================================")
+
+def view_trans(trans):
+    print("Berikut di bawah ini adalah Transportasi Tercepat!!!")
+    print("=============================")
+    print(" No.     Nama Transportasi  ")
+    print("=============================")
+    for i in range(len(trans)):
+        print("%i \t %s %s" % (i + 1 , str(trans[i]).capitalize(), "Tercepat" ))
+    print("=============================")
+    
+
 

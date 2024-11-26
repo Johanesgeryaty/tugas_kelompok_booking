@@ -49,7 +49,7 @@ def get_train():
     for i in range(jumlah_tiket):
         print(f"\nTiket ke-{i + 1}")
         
-        # Input dan validasi kelas kereta
+        # Input dan validasi kelas 
         kelas = Validate.validate_input(
             "Masukkan kelas kereta [Ekonomi/Bisnis/Executive]: ",
             KELAS_KERETA
