@@ -1,5 +1,6 @@
 # Konstanta untuk harga dan pilihan
 from utils import validateInput as Validate
+from view import view as View
 
 HARGA_BUS = {
     "bandung": 200000,
@@ -52,6 +53,7 @@ def get_bus():
         print(f"\nTiket ke-{i + 1}")
         
         # Input dan validasi kelas
+        View.view_kelas(HARGA_KELAS)
         kelas = Validate.validate_input(
             "Masukkan kelas bus [Ekonomi/VIP/Executive]: ",
             KELAS_BUS

@@ -14,7 +14,7 @@ def main():
             elif pilihan == "hotel":
                 return print(Hotel.get_hotel())
         except:
-            print("Maaf ada yang salah, Coba ulangi lagi")
+            print("Maaf, ada yang salah, Coba ulangi lagi")
              
 if __name__ == "__main__":
     main()

@@ -1,4 +1,5 @@
 from utils import validateInput as Validate
+from view import view as View
 
 # Konstanta untuk harga dan pilihan
 HARGA_KERETA = {
@@ -9,7 +10,7 @@ HARGA_KERETA = {
 
 HARGA_KELAS = {
     "ekonomi" : 0,
-    "bisnis" : 100000,
+    "vip" : 100000,
     "executive" : 200000
 }
 
@@ -49,22 +50,25 @@ def get_train():
     for i in range(jumlah_tiket):
         print(f"\nTiket ke-{i + 1}")
         
-        # Input dan validasi kelas 
-        kelas = Validate.validate_input(
-            "Masukkan kelas kereta [Ekonomi/Bisnis/Executive]: ",
-            KELAS_KERETA
-        )
-        
         # Input dan validasi titik awal
+        View.view_titik_awal(HARGA_KERETA)
         asal = Validate.validate_input(
             "Masukkan titik awal [Bandung/Semarang/Surabaya]: ",
             KOTA_TERSEDIA
         )
         
         # Input dan validasi tujuan
+        View.view_titik_tujuan(HARGA_KERETA, asal)
         tujuan = Validate.validate_input(
             "Masukkan tujuan [Bandung/Semarang/Surabaya]: ",
             KOTA_TERSEDIA
+        )
+        
+        # Input dan validasi kelas 
+        View.view_kelas(HARGA_KELAS)
+        kelas = Validate.validate_input(
+        "Masukkan kelas kereta [Ekonomi/VIP/Executive]: ",
+        KELAS_KERETA
         )
         
         # Menghitung harga tiket

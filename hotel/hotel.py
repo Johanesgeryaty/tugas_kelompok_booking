@@ -81,14 +81,23 @@ def get_hotel():
             try:
                 trans = Validate.validate_input("Apakah anda ingin memesan transportasi? (Ya/Tidak)", ["ya", "tidak"])
                 if trans == "ya":
+                    pilihan_valid = ["bus", "kereta"]
+                    View.view_trans(pilihan_valid)
                     bus_or_kereta = Validate.validate_input("Anda ingin memesan Bus atau Kereta? (Bus/Kereta)", ["bus", "kereta"])
                     if bus_or_kereta == "bus":
                         bus = Bus.get_bus()
-                        return result, bus
+                        data = {
+                            "Hotel" : result,
+                            "Transpoertasi" : bus
+                        }
+                        return data
                     elif bus_or_kereta == "kereta":
                         kereta = Kereta.get_train()
-                        penampung = {}
-                        return result, kereta
+                        data = {
+                            "Hotel" : result,
+                            "Transpoertasi" : kereta
+                        }
+                        return data
             except:
                 print("anjengggg")
     else:

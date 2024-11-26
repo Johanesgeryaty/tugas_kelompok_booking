@@ -41,6 +41,42 @@ def view_trans(trans):
     for i in range(len(trans)):
         print("%i \t %s %s" % (i + 1 , str(trans[i]).capitalize(), "Tercepat" ))
     print("=============================")
-    
+
+def view_kelas(kelas):
+    tipe_kelas = list(kelas.keys())
+    print("Memilih Tipe Kelas diatas ekonomi akan dikenakan biaya tambahan sebagai berikut : ")
+    print("========================================")
+    print(" No.     Tipe Kelas              Harga")
+    print("========================================")
+    for i in range(len(kelas)):
+        if i == 0:
+            print("%i \t %s \t\t  " % (i + 1, str(tipe_kelas[i]).capitalize()))
+            continue
+        if i == 1:
+            print("%i \t %s \t\t\t %i " % (i + 1, str(tipe_kelas[i]).capitalize(), kelas[tipe_kelas[i]]))
+            continue
+        print("%i \t %s \t\t %i " % (i + 1 , str(tipe_kelas[i]).capitalize(), kelas[tipe_kelas[i]] ))
+    print("========================================")
+
+def view_titik_awal(titik):
+    titik_awal = list(titik.keys())
+    print("========================================")
+    print(" No.      Nama Hotel              Harga")
+    print("========================================")
+    for i in range(len(titik_awal)):
+        print("%i \t %s \t\t %i " % (i + 1, str(titik_awal[i]).capitalize(), titik[titik_awal[i]]))
+    print("========================================")
+
+def view_titik_tujuan(titik,asal):
+    titik_awal = list(titik.keys())
+    print("========================================")
+    print(" No.      Nama Hotel              Harga")
+    print("========================================")
+    for i in range(len(titik_awal)):
+        if asal == "bandung" or asal == "semarang" or asal == "surabaya" :
+            print("%i \t %s \t\t  " % (i + 1, str(titik_awal[i]).capitalize()))
+            continue
+        print("%i \t %s \t\t %i " % (i + 1, str(titik_awal[i]).capitalize(), titik[titik_awal[i]]))
+    print("========================================")
 
 
