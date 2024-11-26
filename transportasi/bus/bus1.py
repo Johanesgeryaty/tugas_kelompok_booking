@@ -52,25 +52,26 @@ def get_bus():
     for i in range(jumlah_tiket):
         print(f"\nTiket ke-{i + 1}")
         
-        # Input dan validasi kelas
-        View.view_kelas(HARGA_KELAS)
-        kelas = Validate.validate_input(
-            "Masukkan kelas bus [Ekonomi/VIP/Executive]: ",
-            KELAS_BUS
-        )
-        
         # Input dan validasi titik awal
+        View.view_titik_awal(HARGA_BUS)
         asal = Validate.validate_input(
             "Masukkan titik awal [Bandung/Semarang/Surabaya]: ",
             KOTA_TERSEDIA
         )
         
         # Input dan validasi tujuan
+        View.view_titik_tujuan(HARGA_BUS, asal)
         tujuan = Validate.validate_input(
             "Masukkan tujuan [Bandung/Semarang/Surabaya]: ",
             KOTA_TERSEDIA
         )
         
+        # Input dan validasi kelas
+        View.view_kelas(HARGA_KELAS)
+        kelas = Validate.validate_input(
+            "Masukkan kelas bus [Ekonomi/VIP/Executive]: ",
+            KELAS_BUS
+        )
         # Menghitung harga tiket
         harga_tiket = calculate_ticket_price(asal, tujuan, kelas)
         
