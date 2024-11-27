@@ -19,7 +19,7 @@ KELAS_BUS = list(HARGA_KELAS.keys())
 KOTA_TERSEDIA = list(HARGA_BUS.keys())
 
 result = {
-    "destinasi": [],
+    "tujuan": [],
     "harga_tiket": [],
     "jumlah_tiket": 0,
     "titik_awal": [],
@@ -78,7 +78,7 @@ def get_bus():
         # Menyimpan data tiket
         result["kelas"].update({kelas : HARGA_KELAS[kelas]})
         result["titik_awal"].append(asal.title())
-        result["destinasi"].append(tujuan.title())
+        result["tujuan"].append(tujuan.title())
         result["harga_tiket"].append(harga_tiket)
         result["total_harga_tiket"] += harga_tiket
 

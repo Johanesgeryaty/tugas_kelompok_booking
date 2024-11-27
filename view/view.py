@@ -80,4 +80,14 @@ def view_titik_tujuan(titik,asal):
     print("========================================")
 
 
+def view_bill(tiket):
+    for i in range(tiket["data"]["jumlah_tiket"]):
+        print(f"tujuan anda adalah: {tiket["data"]["tujuan"][i]}")
+        print(f"titik awal anda adalah: {tiket["data"]["titik_awal"][i]}")
 
+
+def view_bill2(tiket):
+    for i in range(tiket["transportasi"]["jumlah_tiket"]):
+        print(i)
+    for i in range(tiket["hotel"]["jumlah_tiket"]):
+        print(i)

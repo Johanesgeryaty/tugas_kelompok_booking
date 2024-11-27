@@ -2,7 +2,8 @@ from utils import validateInput as Validate
 from view import view as View
 from transportasi.bus import bus1 as Bus
 from transportasi.kereta import kereta as Kereta
-from transportasi.transportasi import penanda
+from transportasi.transportasi import get_transportasi
+
 # Konstanta untuk harga dan pilihan
 HARGA_KAMAR = {
     "standart": 0,
@@ -76,29 +77,5 @@ def get_hotel():
         result["tipe_kamar"].append(tipe_kamar.title())
         result["harga_hotel"].append(harga_hotel)
         result["total_harga_hotel"] += harga_hotel
-    if penanda == 0:
-        while True:
-            try:
-                trans = Validate.validate_input("Apakah anda ingin memesan transportasi? (Ya/Tidak)", ["ya", "tidak"])
-                if trans == "ya":
-                    pilihan_valid = ["bus", "kereta"]
-                    View.view_trans(pilihan_valid)
-                    bus_or_kereta = Validate.validate_input("Anda ingin memesan Bus atau Kereta? (Bus/Kereta)", ["bus", "kereta"])
-                    if bus_or_kereta == "bus":
-                        bus = Bus.get_bus()
-                        data = {
-                            "Hotel" : result,
-                            "Transpoertasi" : bus
-                        }
-                        return data
-                    elif bus_or_kereta == "kereta":
-                        kereta = Kereta.get_train()
-                        data = {
-                            "Hotel" : result,
-                            "Transpoertasi" : kereta
-                        }
-                        return data
-            except:
-                print("anjengggg")
-    else:
-        return result
+        
+    return result
