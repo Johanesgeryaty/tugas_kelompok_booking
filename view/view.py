@@ -80,50 +80,123 @@ def view_titik_tujuan(titik,asal):
     print("========================================")
 
 def view_bill_trans(tiket, nama):
-    txt = "{:^57}"
-    bill = tiket["transportasi"]
-    print("==================================================")
+    txt = "{:^70}"
+    transportasi = tiket["transportasi"]
+    print("=================================================================")
     print(txt.format("\033[1m Tagihan Pembayaran \033[0m"))
-    print("==================================================")
-    print("%s \t %s \t %s \t %s \t %s" % ("No.", "Titik Awal", "Tujuan", "Kelas","Harga"))
-    print("--------------------------------------------------")
-    for i in range(bill["jumlah_tiket"]):
-        print("%i \t %s \t %s\t %s \t %i" % (i + 1, bill["titik_awal"][i], bill["tujuan"][i], bill["kelas"][i], bill["harga_tiket"][i]))
-    print("==================================================")
-    print("\t \t \t %s" % (f"Total Harga Rp. {bill["total_harga_tiket"]}"))
-    print(f"Terimakasih sudah membeli produk kami {nama}")
+    print("=================================================================")
+    print("%s \t %s \t %s \t %s \t\t %s" % ("No.", "Titik Awal", "Tujuan", "Kelas","Harga"))
+    print("-----------------------------------------------------------------")
+    for i in range(transportasi["jumlah_tiket"]):
+        if transportasi["kelas"][i] == "Vip":
+            print("%i \t %s \t %s \t %s\t\t %i" % (i + 1, transportasi["titik_awal"][i], transportasi["tujuan"][i], transportasi["kelas"][i], transportasi["harga_tiket"][i]))
+            print("-----------------------------------------------------------------")
+            continue
+        print("%i \t %s \t %s\t %s \t %i" % (i + 1, transportasi["titik_awal"][i], transportasi["tujuan"][i], transportasi["kelas"][i], transportasi["harga_tiket"][i]))
+        print("-----------------------------------------------------------------")
+    print("=================================================================")
+    print("\t \t \t %s" % (f"Total Harga Rp. {transportasi["total_harga_tiket"]}"))
+    while True:
+        try:
+            bayar = int(input("Masukkan uang bayar anda: "))
+            if bayar > transportasi["total_harga_tiket"]:
+                print(f"Uang yang anda masukkan adalah {bayar}, kembalian anda {bayar - transportasi["total_harga_tiket"]}")
+                print(f"Terimakasih {nama} telah memesan tiket transportasi di agen kami")
+                break
+            elif bayar == transportasi["total_harga_tiket"]:
+                print(f"Uang yang anda masukkan adalah {bayar}, Uang anda Pas")
+                print(f"Terimakasih {nama} telah memesan tiket transportasi di agen kami")
+                break
+            else:
+                print("Maaf uang yang anda masukkan kurang, Silahkan coba lagi")
+        except:
+            print("Maaf ada yang salah")
+
 
 def view_bill_hotel(tiket, nama):
-    txt = "{:^57}"
-    bill = tiket["hotel"]
-    print("==================================================")
+    txt = "{:^70}"
+    hotel = tiket["hotel"]
+    print("=========================================================")
     print(txt.format("\033[1m Tagihan Pembayaran \033[0m"))
-    print("==================================================")
-    print("%s \t %s \t %s \t %s" % ("No.", "Nama Hotel", "Tipe Kamar", "Harga"))
-    print("--------------------------------------------------")
-    for i in range(bill["jumlah_kamar"]):
-        print("%i \t %s \t %s \t %i" % (i + 1, bill["nama_hotel"][i], bill["tipe_kamar"][i], bill["harga_hotel"][i]))
-    print("==================================================")
-    print("\t \t \t %s" % (f"Total Harga Rp. {bill["total_harga_hotel"]}"))
-    print(f"Terimakasih sudah membeli produk kami {nama}")
+    print("=========================================================")
+    print("%s \t %s \t\t %s \t %s" % ("No.", "Nama Hotel", "Tipe Kamar", "Harga"))
+    print("---------------------------------------------------------")
+    for i in range(hotel["jumlah_kamar"]):
+        if hotel["tipe_kamar"][i] == "Twin":
+            print("%i \t %s \t %s \t\t %i" % (i + 1, hotel["nama_hotel"][i], hotel["tipe_kamar"][i], hotel["harga_hotel"][i]))
+            print("---------------------------------------------------------")
+            continue
+        print("%i \t %s \t %s \t %i" % (i + 1, hotel["nama_hotel"][i], hotel["tipe_kamar"][i], hotel["harga_hotel"][i]))
+        print("---------------------------------------------------------")
+    print("=========================================================")
+    print("\t \t \t %s" % (f"Total Harga Rp. {hotel["total_harga_hotel"]}"))
+    while True:
+        try:
+            bayar = int(input("Masukkan uang bayar anda: "))
+            if bayar > hotel["total_harga_hotel"]:
+                print(f"Uang yang anda masukkan adalah {bayar}, kembalian anda {bayar - hotel["total_harga_tiket"]}")
+                print(f"Terimakasih {nama} telah memesan hotel di agen kami")
+                break
+            elif bayar == hotel["total_harga_hotel"]:
+                print(f"Uang yang anda masukkan adalah {bayar}, Uang anda Pas")
+                print(f"Terimakasih {nama} telah memesan hotel di agen kami")
+                break
+            else:
+                print("Maaf uang yang anda masukkan kurang, Silahkan coba lagi")
+        except:
+            print("Maaf ada yang salah")
 
 def view_bill2(tiket, nama):
+    txt = "{:^70}"
     transportasi = tiket["transportasi"]
     hotel = tiket["hotel"]
-    print("==================================================")
-    print("%s \t %s \t %s \t %s \t %s" % ("No.", "Titik Awal", "Tujuan", "Kelas","Harga"))
-    print("--------------------------------------------------")
+    print("=================================================================")
+    print(txt.format("\033[1m Tagihan Pembayaran \033[0m"))
+    print("=================================================================")
+    print("%s \t %s \t %s \t %s \t\t %s" % ("No.", "Titik Awal", "Tujuan", "Kelas","Harga"))
+    print("-----------------------------------------------------------------")
     for i in range(transportasi["jumlah_tiket"]):
+        if transportasi["kelas"][i] == "Vip":
+            print("%i \t %s \t %s \t %s\t\t %i" % (i + 1, transportasi["titik_awal"][i], transportasi["tujuan"][i], transportasi["kelas"][i], transportasi["harga_tiket"][i]))
+            print("-----------------------------------------------------------------")
+            continue
         print("%i \t %s \t %s \t %s\t %i" % (i + 1, transportasi["titik_awal"][i], transportasi["tujuan"][i], transportasi["kelas"][i], transportasi["harga_tiket"][i]))
-    print("==================================================")
+    print("=================================================================")
     print("\t \t \t %s" % (f"Total Harga Transportasi Rp. {transportasi["total_harga_tiket"]}"))
     print()
-    print("==================================================")
-    print("%s \t %s \t %s \t %s" % ("No.", "Nama Hotel", "Tipe Kamar", "Harga"))
-    print("--------------------------------------------------")
+    print("=================================================================")
+    print("%s \t %s \t\t %s \t %s" % ("No.", "Nama Hotel", "Tipe Kamar", "Harga"))
+    print("-----------------------------------------------------------------")
     for i in range(hotel["jumlah_kamar"]):
+        if hotel["tipe_kamar"][i] == "Twin":
+            print("%i \t %s \t %s \t\t %i" % (i + 1, hotel["nama_hotel"][i], hotel["tipe_kamar"][i], hotel["harga_hotel"][i]))
+            print("-----------------------------------------------------------------")
+            continue
         print("%i \t %s \t %s \t %i" % (i + 1, hotel["nama_hotel"][i], hotel["tipe_kamar"][i], hotel["harga_hotel"][i]))
-    print("==================================================")
+        print("-----------------------------------------------------------------")
+
+    print("=================================================================")
     print("\t \t \t %s" % (f"Total Harga Kamar Hotel Rp. {hotel["total_harga_hotel"]}"))
-    print(f"Total Harga Pesanan Anda Rp. {hotel["total_harga_hotel"] + transportasi["total_harga_tiket"]} ")
-    print(f"Terimakasih sudah membeli produk kami {nama}")
+    tagihan = hotel["total_harga_hotel"] + transportasi["total_harga_tiket"]
+    print(f"Total Harga Pesanan Anda Rp. {tagihan} ")
+
+    while True:
+        try:
+            bayar = int(input("Masukkan uang bayar anda: "))
+            if bayar > tagihan:
+                print(f"Uang yang anda masukkan adalah {bayar}, kembalian anda {bayar - tagihan}")
+                print(f"Terimakasih {nama} telah memesan tiket transportasi dan hotel di agen kami")
+                break
+            elif bayar == tagihan:
+                print(f"Uang yang anda masukkan adalah {bayar}, Uang anda Pas")
+                print(f"Terimakasih {nama} telah memesan tiket transportasi dan hotel di agen kami")
+                break
+            else:
+                print("Maaf uang yang anda masukkan kurang, Silahkan coba lagi")
+        except:
+            print("Maaf ada yang salah")
+
+
+
+
+

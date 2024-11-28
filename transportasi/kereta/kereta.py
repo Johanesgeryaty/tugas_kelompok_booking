@@ -81,4 +81,4 @@ def get_train():
         result["harga_tiket"].append(harga_tiket)
         result["total_harga_tiket"] += harga_tiket
 
-        return result
+    return result

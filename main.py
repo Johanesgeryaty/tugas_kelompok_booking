@@ -15,7 +15,7 @@ def main():
             if pilihan == "transportasi":
                 data = {}
                 trans = Trans.get_transportasi()
-                x = Validate.validate_input("Apakah anda berminat memesan hotel", ["ya","tidak"])
+                x = Validate.validate_input("Apakah anda berminat memesan hotel? [ya/tidak]", ["ya","tidak"])
                 if x == "ya":
                     hotel = Hotel.get_hotel()
                     data.update({
@@ -31,7 +31,7 @@ def main():
             elif pilihan == "hotel":
                 hotel = Hotel.get_hotel()
                 data = {}
-                x = Validate.validate_input("Apakah anda berminat memesan transportasi", ["ya","tidak"])
+                x = Validate.validate_input("Apakah anda berminat memesan transportasi? [ya/tidak]", ["ya","tidak"])
                 if x == "ya":
                     trans = Trans.get_transportasi()
                     data.update({
@@ -50,7 +50,6 @@ def main():
              
 if __name__ == "__main__":
     data = main()
-    print(data)
     if len(data) == 1 :
         if "transportasi" in data:
             View.view_bill_trans(data,nama_pembeli)
@@ -58,4 +57,4 @@ if __name__ == "__main__":
             View.view_bill_hotel(data,nama_pembeli)
     elif len(data) == 2 :
         View.view_bill2(data,nama_pembeli)
-    print(nama_pembeli)
+    
