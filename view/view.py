@@ -80,8 +80,8 @@ def view_titik_tujuan(titik,asal):
     print("========================================")
 
 def view_bill_trans(tiket, nama):
-    txt = "{:^41}"
-    bill = tiket["data"]
+    txt = "{:^57}"
+    bill = tiket["transportasi"]
     print("==================================================")
     print(txt.format("\033[1m Tagihan Pembayaran \033[0m"))
     print("==================================================")
@@ -91,6 +91,20 @@ def view_bill_trans(tiket, nama):
         print("%i \t %s \t %s \t %i" % (i + 1, bill["titik_awal"][i], bill["tujuan"][i], bill["harga_tiket"][i]))
     print("==================================================")
     print("\t \t \t %s" % (f"Total Harga Rp. {bill["total_harga_tiket"]}"))
+    print(f"Terimakasih sudah membeli produk kami {nama}")
+
+def view_bill_hotel(tiket, nama):
+    txt = "{:^57}"
+    bill = tiket["hotel"]
+    print("==================================================")
+    print(txt.format("\033[1m Tagihan Pembayaran \033[0m"))
+    print("==================================================")
+    print("%s \t %s \t %s \t %s" % ("No.", "Nama Hotel", "Tipe Kamar", "Harga"))
+    print("==================================================")
+    for i in range(bill["jumlah_kamar"]):
+        print("%i \t %s \t %s \t %i" % (i + 1, bill["nama_hotel"][i], bill["tipe_kamar"][i], bill["harga_hotel"][i]))
+    print("==================================================")
+    print("\t \t \t %s" % (f"Total Harga Rp. {bill["total_harga_hotel"]}"))
     print(f"Terimakasih sudah membeli produk kami {nama}")
 
 def view_bill2(tiket):

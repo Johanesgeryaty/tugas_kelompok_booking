@@ -29,8 +29,14 @@ data = {
     "laki": "nauvalino",
     "wanita": ["aihihihi", "aihahahaha"]
     },
-    "kelas": {}
+    # "kelas": {}
 }
 hai = list(data.keys())
-print(hai[0])
+# print(hai[0])
+
+if len(data) in [1] :
+    if "nama" in data:
+        print ("data 1")
+elif len(data) in [2] :
+    print("data 2")
 
