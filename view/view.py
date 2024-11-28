@@ -79,15 +79,24 @@ def view_titik_tujuan(titik,asal):
         print("%i \t %s \t\t %i " % (i + 1, str(titik_awal[i]).capitalize(), titik[titik_awal[i]]))
     print("========================================")
 
-
-def view_bill(tiket):
-    for i in range(tiket["data"]["jumlah_tiket"]):
-        print(f"tujuan anda adalah: {tiket["data"]["tujuan"][i]}")
-        print(f"titik awal anda adalah: {tiket["data"]["titik_awal"][i]}")
-
+def view_bill_trans(tiket, nama):
+    txt = "{:^41}"
+    bill = tiket["data"]
+    print("==================================================")
+    print(txt.format("\033[1m Tagihan Pembayaran \033[0m"))
+    print("==================================================")
+    print("%s \t %s \t %s \t %s" % ("No.", "Titik Awal", "Tujuan", "Harga"))
+    print("==================================================")
+    for i in range(bill["jumlah_tiket"]):
+        print("%i \t %s \t %s \t %i" % (i + 1, bill["titik_awal"][i], bill["tujuan"][i], bill["harga_tiket"][i]))
+    print("==================================================")
+    print("\t \t \t %s" % (f"Total Harga Rp. {bill["total_harga_tiket"]}"))
+    print(f"Terimakasih sudah membeli produk kami {nama}")
 
 def view_bill2(tiket):
-    for i in range(tiket["transportasi"]["jumlah_tiket"]):
+    transportasi = tiket["transportasi"]
+    hotel = tiket["hotel"]
+    for i in range(transportasi["jumlah_tiket"]):
         print(i)
-    for i in range(tiket["hotel"]["jumlah_tiket"]):
+    for i in range(hotel["jumlah_tiket"]):
         print(i)

@@ -23,7 +23,7 @@ result = {
     "harga_tiket": [],
     "jumlah_tiket": 0,
     "titik_awal": [],
-    "kelas": {},
+    "kelas": [],
     "total_harga_tiket": 0
 }
 
@@ -76,7 +76,7 @@ def get_bus():
         harga_tiket = calculate_ticket_price(asal, tujuan, kelas)
         
         # Menyimpan data tiket
-        result["kelas"].update({kelas : HARGA_KELAS[kelas]})
+        result["kelas"].append(kelas.title())
         result["titik_awal"].append(asal.title())
         result["tujuan"].append(tujuan.title())
         result["harga_tiket"].append(harga_tiket)

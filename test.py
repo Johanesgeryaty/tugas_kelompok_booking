@@ -31,6 +31,6 @@ data = {
     },
     "kelas": {}
 }
-
-print(len(data))
+hai = list(data.keys())
+print(hai[0])
 
