@@ -57,5 +57,5 @@ if __name__ == "__main__":
         elif "hotel" in data:
             View.view_bill_hotel(data,nama_pembeli)
     elif len(data) == 2 :
-        print("data 2")
+        View.view_bill2(data,nama_pembeli)
     print(nama_pembeli)
