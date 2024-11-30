@@ -1,8 +1,5 @@
 from utils import validateInput as Validate
 from view import view as View
-from transportasi.bus import bus1 as Bus
-from transportasi.kereta import kereta as Kereta
-from transportasi.transportasi import get_transportasi
 
 # Konstanta untuk harga dan pilihan
 HARGA_KAMAR = {
@@ -19,6 +16,7 @@ HARGA_HOTEL = {
     "novotel(semarang)": 200000,
     "sheraton(surabaya)": 250000
 }
+
 
 NAMA_HOTEL = list(HARGA_HOTEL.keys())
 
@@ -39,7 +37,6 @@ def calculate_hotel_price(jenisKamar, namaHotel):
 
 def get_hotel():
     """Fungsi utama untuk pembelian tiket bus"""
-    
     while True:
         try:
             jumlah_kamar = int(input("Berapa kamar yang ingin anda pesan: "))

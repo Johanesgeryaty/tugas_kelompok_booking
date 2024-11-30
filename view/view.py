@@ -95,7 +95,7 @@ def view_bill_trans(tiket, nama):
         print("%i \t %s \t %s\t %s \t %i" % (i + 1, transportasi["titik_awal"][i], transportasi["tujuan"][i], transportasi["kelas"][i], transportasi["harga_tiket"][i]))
         print("-----------------------------------------------------------------")
     print("=================================================================")
-    print("\t \t \t %s" % (f"Total Harga Rp. {transportasi["total_harga_tiket"]}"))
+    print("\t \t \t \t %s" % (f"Total Harga Rp. {transportasi["total_harga_tiket"]}"))
     while True:
         try:
             bayar = int(input("Masukkan uang bayar anda: "))
@@ -129,7 +129,7 @@ def view_bill_hotel(tiket, nama):
         print("%i \t %s \t %s \t %i" % (i + 1, hotel["nama_hotel"][i], hotel["tipe_kamar"][i], hotel["harga_hotel"][i]))
         print("---------------------------------------------------------")
     print("=========================================================")
-    print("\t \t \t %s" % (f"Total Harga Rp. {hotel["total_harga_hotel"]}"))
+    print("\t \t \t \t %s" % (f"Total Harga Rp. {hotel["total_harga_hotel"]}"))
     while True:
         try:
             bayar = int(input("Masukkan uang bayar anda: "))
@@ -176,7 +176,7 @@ def view_bill2(tiket, nama):
         print("-----------------------------------------------------------------")
 
     print("=================================================================")
-    print("\t \t \t %s" % (f"Total Harga Kamar Hotel Rp. {hotel["total_harga_hotel"]}"))
+    print("\t \t \t \t%s" % (f"Total Harga Kamar Hotel Rp. {hotel["total_harga_hotel"]}"))
     tagihan = hotel["total_harga_hotel"] + transportasi["total_harga_tiket"]
     print(f"Total Harga Pesanan Anda Rp. {tagihan} ")
 
