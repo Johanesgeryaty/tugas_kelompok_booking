@@ -15,7 +15,7 @@ def main():
             if pilihan == "transportasi":
                 data = {}
                 trans = Trans.get_transportasi()
-                x = Validate.validate_input("Apakah anda berminat memesan hotel? [ya/tidak]", ["ya","tidak"])
+                x = Validate.validate_input("Apakah anda berminat memesan hotel [ya/tidak]? ", ["ya","tidak"])
                 if x == "ya":
                     hotel = Hotel.get_hotel()
                     data.update({
@@ -31,7 +31,7 @@ def main():
             elif pilihan == "hotel":
                 hotel = Hotel.get_hotel()
                 data = {}
-                x = Validate.validate_input("Apakah anda berminat memesan transportasi? [ya/tidak]", ["ya","tidak"])
+                x = Validate.validate_input("Apakah anda berminat memesan transportasi[ya/tidak]? ", ["ya","tidak"])
                 if x == "ya":
                     trans = Trans.get_transportasi()
                     data.update({

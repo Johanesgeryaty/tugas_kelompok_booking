@@ -1,7 +1,7 @@
 def greeting():
-    txt = "{:^41}"
+    txt = "{:^43}"
     print("===================================")
-    print(txt.format("\033[1m TOKO BANG DICK \033[0m"))
+    print(txt.format("\033[1m Bookit \033[0m"))
     print("===================================")
     print(f"""Selamat datang di aplikasi booking\n{"{:^35}".format("nomer 1 di indonesia!!")}""")
     print("===================================\n")
@@ -134,7 +134,7 @@ def view_bill_hotel(tiket, nama):
         try:
             bayar = int(input("Masukkan uang bayar anda: "))
             if bayar > hotel["total_harga_hotel"]:
-                print(f"Uang yang anda masukkan adalah {bayar}, kembalian anda {bayar - hotel["total_harga_tiket"]}")
+                print(f"Uang yang anda masukkan adalah {bayar}, kembalian anda {bayar - hotel["total_harga_hotel"]}")
                 print(f"Terimakasih {nama} telah memesan hotel di agen kami")
                 break
             elif bayar == hotel["total_harga_hotel"]:
@@ -161,6 +161,7 @@ def view_bill2(tiket, nama):
             print("-----------------------------------------------------------------")
             continue
         print("%i \t %s \t %s \t %s\t %i" % (i + 1, transportasi["titik_awal"][i], transportasi["tujuan"][i], transportasi["kelas"][i], transportasi["harga_tiket"][i]))
+        print("-----------------------------------------------------------------")
     print("=================================================================")
     print("\t \t \t %s" % (f"Total Harga Transportasi Rp. {transportasi["total_harga_tiket"]}"))
     print()
