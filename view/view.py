@@ -196,8 +196,3 @@ def view_bill2(tiket, nama):
                 print("Maaf uang yang anda masukkan kurang, Silahkan coba lagi")
         except:
             print("Maaf ada yang salah")
-
-
-
-
-
