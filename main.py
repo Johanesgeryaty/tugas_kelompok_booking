@@ -2,6 +2,7 @@ from hotel import hotel as Hotel
 from transportasi import transportasi as Trans
 from view import view as View
 from utils import validateInput as Validate
+import pandas as pd
 
 nama_pembeli = ""
 
@@ -11,8 +12,11 @@ def main():
             View.greeting()
             global nama_pembeli
             nama_pembeli= input("Silahkan masukan nama anda : ")
-            pilihan = Validate.validate_input("\nSilahkan anda pilih tiket transportasi atau hotel [Transportasi,Hotel] ? ",["transportasi", "hotel"] )
-            if pilihan == "transportasi":
+            data = {"layanan tersedia" : ["transportasi", "hotel"]}
+            df = pd.DataFrame(data,index=[1,2])
+            print("\n",df)
+            pilihan = Validate.validate_input("\nSilahkan anda pilih tiket transportasi atau hotel [1,2] ? ", ["1", "2"])
+            if pilihan == "1":
                 data = {}
                 trans = Trans.get_transportasi()
                 x = Validate.validate_input("Apakah anda berminat memesan hotel [ya/tidak]? ", ["ya","tidak"])
@@ -28,7 +32,7 @@ def main():
                         "transportasi": trans
                     })
                     return data
-            elif pilihan == "hotel":
+            elif pilihan == "2":
                 hotel = Hotel.get_hotel()
                 data = {}
                 x = Validate.validate_input("Apakah anda berminat memesan transportasi[ya/tidak]? ", ["ya","tidak"])
@@ -57,4 +61,3 @@ if __name__ == "__main__":
             View.view_bill_hotel(data,nama_pembeli)
     elif len(data) == 2 :
         View.view_bill2(data,nama_pembeli)
-    
